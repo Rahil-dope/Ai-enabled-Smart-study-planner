@@ -1,0 +1,358 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            background: #F8FAFC;
+            display: flex;
+            justify-content: center;
+            min-height: 100vh
+        }
+
+        .phone {
+            width: 390px;
+            min-height: 844px;
+            background: #F8FAFC;
+            overflow: hidden
+        }
+
+        .appbar {
+            display: flex;
+            align-items: center;
+            padding: 16px 20px;
+            gap: 12px
+        }
+
+        .appbar svg {
+            width: 24px;
+            height: 24px;
+            fill: #1E293B;
+            cursor: pointer
+        }
+
+        .appbar h1 {
+            font-size: 18px;
+            font-weight: 600;
+            color: #1E293B
+        }
+
+        .body {
+            padding: 0 20px 24px
+        }
+
+        .progress-card {
+            background: linear-gradient(135deg, #4F46E5, #818CF8);
+            border-radius: 16px;
+            padding: 20px;
+            margin-bottom: 16px;
+            color: #fff
+        }
+
+        .progress-top {
+            display: flex;
+            justify-content: space-between;
+            align-items: center
+        }
+
+        .progress-label {
+            font-size: 13px;
+            color: rgba(255, 255, 255, .7);
+            margin-bottom: 4px
+        }
+
+        .progress-val {
+            font-size: 24px;
+            font-weight: 700
+        }
+
+        .pct-circle {
+            width: 56px;
+            height: 56px;
+            border-radius: 50%;
+            background: rgba(255, 255, 255, .2);
+            display: flex;
+            align-items: center;
+            justify-content: center
+        }
+
+        .pct-circle span {
+            font-size: 16px;
+            font-weight: 700
+        }
+
+        .progress-bar {
+            height: 8px;
+            background: rgba(255, 255, 255, .2);
+            border-radius: 4px;
+            margin-top: 16px;
+            overflow: hidden
+        }
+
+        .progress-fill {
+            height: 100%;
+            background: #fff;
+            border-radius: 4px;
+            width: 40%
+        }
+
+        .task-card {
+            background: #fff;
+            border-radius: 16px;
+            border: 1px solid #E2E8F0;
+            margin-bottom: 12px;
+            overflow: hidden
+        }
+
+        .task-card.done {
+            border-color: rgba(16, 185, 129, .3)
+        }
+
+        .task-header {
+            display: flex;
+            align-items: center;
+            padding: 16px;
+            gap: 12px;
+            cursor: pointer
+        }
+
+        .check {
+            width: 32px;
+            height: 32px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-shrink: 0
+        }
+
+        .check.empty {
+            background: #E2E8F0
+        }
+
+        .check.filled {
+            background: #10B981
+        }
+
+        .check.filled svg {
+            width: 18px;
+            height: 18px;
+            fill: #fff
+        }
+
+        .task-title {
+            font-size: 15px;
+            font-weight: 600;
+            color: #1E293B
+        }
+
+        .task-title.struck {
+            text-decoration: line-through;
+            color: #94A3B8
+        }
+
+        .task-meta {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            margin-top: 4px
+        }
+
+        .task-meta span {
+            display: flex;
+            align-items: center;
+            gap: 4px;
+            font-size: 12px;
+            color: #64748B
+        }
+
+        .task-meta svg {
+            width: 14px;
+            height: 14px;
+            fill: #94A3B8
+        }
+
+        .task-info {
+            flex: 1
+        }
+
+        .expand svg {
+            width: 20px;
+            height: 20px;
+            fill: #94A3B8;
+            transition: transform .2s
+        }
+
+        .topics {
+            padding: 0 16px 16px 60px
+        }
+
+        .topic {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            padding: 4px 0;
+            font-size: 14px;
+            color: #1E293B
+        }
+
+        .topic .dot {
+            width: 6px;
+            height: 6px;
+            border-radius: 50%;
+            background: #4F46E5;
+            flex-shrink: 0
+        }
+    </style>
+</head>
+
+<body>
+    <div class="phone">
+        <div class="appbar"><svg viewBox="0 0 24 24">
+                <path d="M20 11H7.83l5.59-5.59L12 4l-8 8 8 8 1.41-1.41L7.83 13H20v-2z" />
+            </svg>
+            <h1>Linear Algebra</h1>
+        </div>
+        <div class="body">
+            <div class="progress-card">
+                <div class="progress-top">
+                    <div>
+                        <div class="progress-label">Progress</div>
+                        <div class="progress-val">8 / 20 days</div>
+                    </div>
+                    <div class="pct-circle"><span>40%</span></div>
+                </div>
+                <div class="progress-bar">
+                    <div class="progress-fill"></div>
+                </div>
+            </div>
+
+            <div class="task-card done">
+                <div class="task-header">
+                    <div class="check filled"><svg viewBox="0 0 24 24">
+                            <path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41z" />
+                        </svg></div>
+                    <div class="task-info">
+                        <div class="task-title struck">Day 1</div>
+                        <div class="task-meta"><span><svg viewBox="0 0 24 24">
+                                    <path
+                                        d="M11.99 2C6.47 2 2 6.48 2 12s4.47 10 9.99 10C17.52 22 22 17.52 22 12S17.52 2 11.99 2zM12 20c-4.42 0-8-3.58-8-8s3.58-8 8-8 8 3.58 8 8-3.58 8-8 8zm.5-13H11v6l5.25 3.15.75-1.23-4.5-2.67z" />
+                                </svg>60 min</span><span><svg viewBox="0 0 24 24">
+                                    <path
+                                        d="M18 2H6c-1.1 0-2 .9-2 2v16c0 1.1.9 2 2 2h12c1.1 0 2-.9 2-2V4c0-1.1-.9-2-2-2zM6 4h5v8l-2.5-1.5L6 12V4z" />
+                                </svg>3 topics</span></div>
+                    </div>
+                    <div class="expand"><svg viewBox="0 0 24 24">
+                            <path d="M7.41 8.59L12 13.17l4.59-4.58L18 10l-6 6-6-6z" />
+                        </svg></div>
+                </div>
+            </div>
+
+            <div class="task-card done">
+                <div class="task-header">
+                    <div class="check filled"><svg viewBox="0 0 24 24">
+                            <path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41z" />
+                        </svg></div>
+                    <div class="task-info">
+                        <div class="task-title struck">Day 2</div>
+                        <div class="task-meta"><span><svg viewBox="0 0 24 24">
+                                    <path
+                                        d="M11.99 2C6.47 2 2 6.48 2 12s4.47 10 9.99 10C17.52 22 22 17.52 22 12S17.52 2 11.99 2zM12 20c-4.42 0-8-3.58-8-8s3.58-8 8-8 8 3.58 8 8-3.58 8-8 8zm.5-13H11v6l5.25 3.15.75-1.23-4.5-2.67z" />
+                                </svg>90 min</span><span><svg viewBox="0 0 24 24">
+                                    <path
+                                        d="M18 2H6c-1.1 0-2 .9-2 2v16c0 1.1.9 2 2 2h12c1.1 0 2-.9 2-2V4c0-1.1-.9-2-2-2zM6 4h5v8l-2.5-1.5L6 12V4z" />
+                                </svg>2 topics</span></div>
+                    </div>
+                    <div class="expand"><svg viewBox="0 0 24 24">
+                            <path d="M7.41 8.59L12 13.17l4.59-4.58L18 10l-6 6-6-6z" />
+                        </svg></div>
+                </div>
+            </div>
+
+            <!-- Expanded task -->
+            <div class="task-card">
+                <div class="task-header">
+                    <div class="check empty"></div>
+                    <div class="task-info">
+                        <div class="task-title">Day 3</div>
+                        <div class="task-meta"><span><svg viewBox="0 0 24 24">
+                                    <path
+                                        d="M11.99 2C6.47 2 2 6.48 2 12s4.47 10 9.99 10C17.52 22 22 17.52 22 12S17.52 2 11.99 2zM12 20c-4.42 0-8-3.58-8-8s3.58-8 8-8 8 3.58 8 8-3.58 8-8 8zm.5-13H11v6l5.25 3.15.75-1.23-4.5-2.67z" />
+                                </svg>120 min</span><span><svg viewBox="0 0 24 24">
+                                    <path
+                                        d="M18 2H6c-1.1 0-2 .9-2 2v16c0 1.1.9 2 2 2h12c1.1 0 2-.9 2-2V4c0-1.1-.9-2-2-2zM6 4h5v8l-2.5-1.5L6 12V4z" />
+                                </svg>4 topics</span></div>
+                    </div>
+                    <div class="expand"><svg viewBox="0 0 24 24" style="transform:rotate(180deg)">
+                            <path d="M7.41 8.59L12 13.17l4.59-4.58L18 10l-6 6-6-6z" />
+                        </svg></div>
+                </div>
+                <div class="topics">
+                    <div class="topic">
+                        <div class="dot"></div>Eigenvalues & Eigenvectors
+                    </div>
+                    <div class="topic">
+                        <div class="dot"></div>Diagonalization
+                    </div>
+                    <div class="topic">
+                        <div class="dot"></div>Orthogonal Matrices
+                    </div>
+                    <div class="topic">
+                        <div class="dot"></div>Gram-Schmidt Process
+                    </div>
+                </div>
+            </div>
+
+            <div class="task-card">
+                <div class="task-header">
+                    <div class="check empty"></div>
+                    <div class="task-info">
+                        <div class="task-title">Day 4</div>
+                        <div class="task-meta"><span><svg viewBox="0 0 24 24">
+                                    <path
+                                        d="M11.99 2C6.47 2 2 6.48 2 12s4.47 10 9.99 10C17.52 22 22 17.52 22 12S17.52 2 11.99 2zM12 20c-4.42 0-8-3.58-8-8s3.58-8 8-8 8 3.58 8 8-3.58 8-8 8zm.5-13H11v6l5.25 3.15.75-1.23-4.5-2.67z" />
+                                </svg>60 min</span><span><svg viewBox="0 0 24 24">
+                                    <path
+                                        d="M18 2H6c-1.1 0-2 .9-2 2v16c0 1.1.9 2 2 2h12c1.1 0 2-.9 2-2V4c0-1.1-.9-2-2-2zM6 4h5v8l-2.5-1.5L6 12V4z" />
+                                </svg>3 topics</span></div>
+                    </div>
+                    <div class="expand"><svg viewBox="0 0 24 24">
+                            <path d="M7.41 8.59L12 13.17l4.59-4.58L18 10l-6 6-6-6z" />
+                        </svg></div>
+                </div>
+            </div>
+
+            <div class="task-card">
+                <div class="task-header">
+                    <div class="check empty"></div>
+                    <div class="task-info">
+                        <div class="task-title">Day 5</div>
+                        <div class="task-meta"><span><svg viewBox="0 0 24 24">
+                                    <path
+                                        d="M11.99 2C6.47 2 2 6.48 2 12s4.47 10 9.99 10C17.52 22 22 17.52 22 12S17.52 2 11.99 2zM12 20c-4.42 0-8-3.58-8-8s3.58-8 8-8 8 3.58 8 8-3.58 8-8 8zm.5-13H11v6l5.25 3.15.75-1.23-4.5-2.67z" />
+                                </svg>90 min</span><span><svg viewBox="0 0 24 24">
+                                    <path
+                                        d="M18 2H6c-1.1 0-2 .9-2 2v16c0 1.1.9 2 2 2h12c1.1 0 2-.9 2-2V4c0-1.1-.9-2-2-2zM6 4h5v8l-2.5-1.5L6 12V4z" />
+                                </svg>2 topics</span></div>
+                    </div>
+                    <div class="expand"><svg viewBox="0 0 24 24">
+                            <path d="M7.41 8.59L12 13.17l4.59-4.58L18 10l-6 6-6-6z" />
+                        </svg></div>
+                </div>
+            </div>
+
+        </div>
+    </div>
+</body>
+
+</html>

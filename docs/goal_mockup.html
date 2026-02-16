@@ -1,0 +1,325 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            background: #F8FAFC;
+            display: flex;
+            justify-content: center;
+            min-height: 100vh
+        }
+
+        .phone {
+            width: 390px;
+            min-height: 844px;
+            background: #F8FAFC;
+            overflow: hidden
+        }
+
+        .appbar {
+            display: flex;
+            align-items: center;
+            padding: 16px 20px;
+            gap: 12px
+        }
+
+        .appbar svg {
+            width: 24px;
+            height: 24px;
+            fill: #1E293B;
+            cursor: pointer
+        }
+
+        .appbar h1 {
+            font-size: 18px;
+            font-weight: 600;
+            color: #1E293B
+        }
+
+        .body {
+            padding: 0 20px 24px
+        }
+
+        .ai-banner {
+            background: linear-gradient(135deg, rgba(79, 70, 229, .08), rgba(129, 140, 248, .05));
+            border-radius: 16px;
+            padding: 16px;
+            display: flex;
+            gap: 12px;
+            align-items: center;
+            margin-bottom: 28px
+        }
+
+        .ai-icon {
+            width: 44px;
+            height: 44px;
+            background: rgba(79, 70, 229, .15);
+            border-radius: 12px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-shrink: 0
+        }
+
+        .ai-icon svg {
+            width: 22px;
+            height: 22px;
+            fill: #4F46E5
+        }
+
+        .ai-text h3 {
+            font-size: 15px;
+            font-weight: 600;
+            color: #1E293B;
+            margin-bottom: 2px
+        }
+
+        .ai-text p {
+            font-size: 12px;
+            color: #64748B
+        }
+
+        .label {
+            font-size: 15px;
+            font-weight: 600;
+            color: #1E293B;
+            margin-bottom: 8px
+        }
+
+        .input-wrap {
+            display: flex;
+            align-items: center;
+            background: #fff;
+            border: 1px solid #E2E8F0;
+            border-radius: 12px;
+            padding: 0 16px;
+            height: 52px;
+            margin-bottom: 20px
+        }
+
+        .input-wrap svg {
+            width: 20px;
+            height: 20px;
+            fill: #94A3B8;
+            margin-right: 12px;
+            flex-shrink: 0
+        }
+
+        .input-wrap input,
+        .input-wrap textarea {
+            border: none;
+            outline: none;
+            font-family: inherit;
+            font-size: 14px;
+            color: #1E293B;
+            flex: 1;
+            background: transparent
+        }
+
+        .input-wrap input::placeholder,
+        .input-wrap textarea::placeholder {
+            color: #94A3B8
+        }
+
+        .date-pick {
+            display: flex;
+            align-items: center;
+            background: #fff;
+            border: 1px solid #E2E8F0;
+            border-radius: 12px;
+            padding: 0 16px;
+            height: 52px;
+            margin-bottom: 24px;
+            cursor: pointer
+        }
+
+        .date-pick svg {
+            width: 20px;
+            height: 20px;
+            fill: #4F46E5;
+            margin-right: 12px
+        }
+
+        .date-pick span {
+            font-size: 15px;
+            color: #1E293B;
+            flex: 1
+        }
+
+        .date-pick .days {
+            font-size: 13px;
+            color: #64748B
+        }
+
+        .slider-card {
+            background: #fff;
+            border: 1px solid #E2E8F0;
+            border-radius: 12px;
+            padding: 16px;
+            margin-bottom: 20px;
+            text-align: center
+        }
+
+        .slider-val {
+            display: flex;
+            align-items: baseline;
+            justify-content: center;
+            gap: 8px;
+            margin-bottom: 8px
+        }
+
+        .slider-val .num {
+            font-size: 32px;
+            font-weight: 700;
+            color: #4F46E5
+        }
+
+        .slider-val .unit {
+            font-size: 14px;
+            color: #64748B
+        }
+
+        .slider-track {
+            width: 100%;
+            height: 6px;
+            background: #E2E8F0;
+            border-radius: 3px;
+            position: relative;
+            margin: 8px 0
+        }
+
+        .slider-fill {
+            width: 16%;
+            height: 100%;
+            background: #4F46E5;
+            border-radius: 3px;
+            position: relative
+        }
+
+        .slider-thumb {
+            width: 18px;
+            height: 18px;
+            background: #4F46E5;
+            border: 3px solid #fff;
+            border-radius: 50%;
+            position: absolute;
+            right: -9px;
+            top: -6px;
+            box-shadow: 0 1px 4px rgba(0, 0, 0, .15)
+        }
+
+        .dropdown {
+            display: flex;
+            align-items: center;
+            background: #fff;
+            border: 1px solid #E2E8F0;
+            border-radius: 12px;
+            padding: 0 16px;
+            height: 52px;
+            margin-bottom: 36px;
+            cursor: pointer
+        }
+
+        .dropdown span {
+            flex: 1;
+            font-size: 15px;
+            color: #1E293B
+        }
+
+        .dropdown svg {
+            width: 20px;
+            height: 20px;
+            fill: #94A3B8
+        }
+
+        .btn {
+            width: 100%;
+            height: 56px;
+            background: #4F46E5;
+            color: #fff;
+            border: none;
+            border-radius: 12px;
+            font-family: inherit;
+            font-size: 16px;
+            font-weight: 600;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 8px
+        }
+
+        .btn svg {
+            width: 20px;
+            height: 20px;
+            fill: #fff
+        }
+    </style>
+</head>
+
+<body>
+    <div class="phone">
+        <div class="appbar"><svg viewBox="0 0 24 24">
+                <path d="M20 11H7.83l5.59-5.59L12 4l-8 8 8 8 1.41-1.41L7.83 13H20v-2z" />
+            </svg>
+            <h1>New Study Goal</h1>
+        </div>
+        <div class="body">
+            <div class="ai-banner">
+                <div class="ai-icon"><svg viewBox="0 0 24 24">
+                        <path
+                            d="M19 9l1.25-2.75L23 5l-2.75-1.25L19 1l-1.25 2.75L15 5l2.75 1.25L19 9zm-7.5.5L9 4 6.5 9.5 1 12l5.5 2.5L9 20l2.5-5.5L17 12l-5.5-2.5zM19 15l-1.25 2.75L15 19l2.75 1.25L19 23l1.25-2.75L23 19l-2.75-1.25L19 15z" />
+                    </svg></div>
+                <div class="ai-text">
+                    <h3>AI-Powered Planning</h3>
+                    <p>Our AI creates a personalized study schedule</p>
+                </div>
+            </div>
+            <div class="label">What do you want to learn?</div>
+            <div class="input-wrap"><svg viewBox="0 0 24 24">
+                    <path d="M5 13.18v4L12 21l7-3.82v-4L12 17l-7-3.82zM12 3L1 9l11 6 9-4.91V17h2V9L12 3z" />
+                </svg><input placeholder="e.g., Linear Algebra, Flutter, Spanish" value="Linear Algebra"></div>
+            <div class="label">Description (Optional)</div>
+            <div class="input-wrap"><svg viewBox="0 0 24 24">
+                    <path
+                        d="M14 2H6c-1.1 0-2 .9-2 2v16c0 1.1.9 2 2 2h12c1.1 0 2-.9 2-2V8l-6-6zm2 16H8v-2h8v2zm0-4H8v-2h8v2zm-3-5V3.5L18.5 9H13z" />
+                </svg><input placeholder="Focus on matrix operations and eigenvalues"
+                    value="Focus on matrix operations and eigenvalues"></div>
+            <div class="label">Target Deadline</div>
+            <div class="date-pick"><svg viewBox="0 0 24 24">
+                    <path
+                        d="M19 3h-1V1h-2v2H8V1H6v2H5c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2zm0 16H5V8h14v11z" />
+                </svg><span>2026-03-18</span><span class="days">30 days</span></div>
+            <div class="label">Daily Commitment</div>
+            <div class="slider-card">
+                <div class="slider-val"><span class="num">2</span><span class="unit">hours/day</span></div>
+                <div class="slider-track">
+                    <div class="slider-fill">
+                        <div class="slider-thumb"></div>
+                    </div>
+                </div>
+            </div>
+            <div class="label">Current Knowledge Level</div>
+            <div class="dropdown"><span>Beginner</span><svg viewBox="0 0 24 24">
+                    <path d="M7.41 8.59L12 13.17l4.59-4.58L18 10l-6 6-6-6z" />
+                </svg></div>
+            <button class="btn"><svg viewBox="0 0 24 24">
+                    <path
+                        d="M19 9l1.25-2.75L23 5l-2.75-1.25L19 1l-1.25 2.75L15 5l2.75 1.25L19 9zm-7.5.5L9 4 6.5 9.5 1 12l5.5 2.5L9 20l2.5-5.5L17 12l-5.5-2.5z" />
+                </svg>Generate Study Plan</button>
+        </div>
+    </div>
+</body>
+
+</html>
