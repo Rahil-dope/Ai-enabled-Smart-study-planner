@@ -209,7 +209,7 @@ flutter run
 ## Project Structure 📁
 
 ```
-PLANER/
+Ai-enabled-Smart-study-planner/
 ├── backend/
 │   ├── src/
 │   │   ├── controllers/
